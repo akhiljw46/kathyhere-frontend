@@ -8,6 +8,12 @@
   left: 0;
   bottom: 0;
 }
+@media (width < 450px) {
+  .footer {
+    display: none;
+  }
+}
+
 .text {
   font-family: 'The Girl Next Door', Courier, monospace;
   color: rgb(220, 179, 255);

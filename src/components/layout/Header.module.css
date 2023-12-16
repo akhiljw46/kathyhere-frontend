@@ -1,6 +1,11 @@
 .header {
   width: 100%;
 }
+@media (width < 450px) {
+  .header {
+    display: none;
+  }
+}
 
 .logo {
   width: 12rem;

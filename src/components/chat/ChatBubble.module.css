@@ -19,6 +19,12 @@
   /* background-color: aliceblue; */
 }
 
+@media (width < 450px) {
+  .bubble {
+    font-size: 1.2rem;
+  }
+}
+
 .ai {
   /* float: left; */
   /* text-align: left; */
