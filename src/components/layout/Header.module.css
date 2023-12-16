@@ -1,0 +1,11 @@
+.header {
+  width: 100%;
+}
+
+.logo {
+  width: 12rem;
+  height: auto;
+  margin: auto;
+  display: inline-block;
+  padding: 15px;
+}

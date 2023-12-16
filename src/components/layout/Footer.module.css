@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+  width: 100%;
+  background-color: #2e1d60;
+  border: 30px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  left: 0;
+  bottom: 0;
+}
+.text {
+  font-family: 'Courier Prime', Courier, monospace;
+  color: rgb(220, 179, 255);
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(158, 75, 236);
+}

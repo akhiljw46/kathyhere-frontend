@@ -1,0 +1,13 @@
+.submit {
+  background-color: rgb(1, 1, 5);
+  color: #fff;
+  border: 2px #e4e2eb24 solid;
+  height: 40px;
+  width: 40px;
+}
+
+.submit:hover {
+  color: black;
+  border: 2px #e4e2eb9a solid;
+  background-color: #ffffff;
+}
