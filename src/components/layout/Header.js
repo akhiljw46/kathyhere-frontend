@@ -1,4 +1,4 @@
-import { ReactComponent as Logo } from '../../images/logo_with_text.svg';
+import { ReactComponent as Logo } from '../../images/logo.svg';
 import classes from './Header.module.css';
 
 const Header = () => {
