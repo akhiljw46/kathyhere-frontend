@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=The+Girl+Next+Door&display=swap');
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #03001c;
+  background-color: #ffb4a2;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'The Girl Next Door', cursive, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
 }
