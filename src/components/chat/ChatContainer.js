@@ -49,7 +49,11 @@ const ChatContainer = () => {
 
   return (
     <section ref={containerRef} className={classes.container}>
-      <div className={classes.users}>
+      <div
+        className={`${classes.users} ${
+          messagesCtx.isUserAvailable ? '' : classes.hidden
+        }`}
+      >
         <span className={classes.profile}>
           {messagesCtx.user === 'kathy' ? (
             <>

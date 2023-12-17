@@ -36,6 +36,10 @@ ul {
   padding: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (width < 450px) {
   .container {
     width: 99%;
