@@ -21,7 +21,8 @@ const InputContainer = () => {
       setError(null);
       try {
         const response = await fetch(
-          'https://kathyhere.onrender.com/v1/message/',
+          // 'https://kathyhere.onrender.com/v1/message/',
+          'http://127.0.0.1:3000/v1/message/kathy',
           {
             method: 'POST',
             body: JSON.stringify({

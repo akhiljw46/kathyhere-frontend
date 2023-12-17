@@ -5,7 +5,7 @@ const DummyMessages = [
   {
     id: 'm1',
     isUser: false,
-    messageText: "Heyy, I'm Kathy. Wassup dear? 😊 ",
+    messageText: "Heyy, I'm Tom. Wassup dear? 😊 ",
   },
   // {
   //   id: 'm2',
@@ -25,6 +25,8 @@ const DummyMessages = [
 ];
 
 const MessageProvider = props => {
+  const [user, setUser] = useState('kathy');
+  const [isUserAvailable, setIsUserAvailable] = useState(false);
   const [messages, setMessages] = useState(DummyMessages);
 
   const addMessageHandler = message => {
@@ -32,9 +34,17 @@ const MessageProvider = props => {
     setMessages(prevMessages => [...prevMessages, message]);
   };
 
+  const setUserHandler = user => setUser(user);
+  const setIsUserAvailableHandler = isAvailable =>
+    setIsUserAvailable(isAvailable);
+
   const messageContext = {
+    user,
+    isUserAvailable,
     messages,
     addMessage: addMessageHandler,
+    setUser: setUserHandler,
+    setIsUserAvailable: setIsUserAvailableHandler,
   };
 
   return (
