@@ -5,23 +5,8 @@ const DummyMessages = [
   {
     id: 'm1',
     isUser: false,
-    messageText: "Heyy, I'm Tom. Wassup dear? 😊 ",
+    messageText: "Heyy, I'm Kathy. Wassup dear? 😊 ",
   },
-  // {
-  //   id: 'm2',
-  //   isUser: false,
-  //   messageText: 'Yes, how can I help you?',
-  // },
-  // {
-  //   id: 'm3',
-  //   isUser: true,
-  //   messageText: 'Can you tell me who is Akhil?',
-  // },
-  // {
-  //   id: 'm4',
-  //   isUser: false,
-  //   messageText: 'Akhil is a boy who lives in his own world!',
-  // },
 ];
 
 const MessageProvider = props => {
@@ -34,7 +19,19 @@ const MessageProvider = props => {
     setMessages(prevMessages => [...prevMessages, message]);
   };
 
-  const setUserHandler = user => setUser(user);
+  const setUserHandler = user => {
+    setUser(user);
+    setMessages([
+      {
+        id: 'm1',
+        isUser: false,
+        messageText: `Heyy, I'm ${
+          user === 'kathy' ? 'Kathy' : 'Tom'
+        }. Wassup dear? 😊 `,
+      },
+    ]);
+    setIsUserAvailable(true);
+  };
   const setIsUserAvailableHandler = isAvailable =>
     setIsUserAvailable(isAvailable);
 

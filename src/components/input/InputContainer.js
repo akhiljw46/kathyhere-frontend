@@ -14,26 +14,22 @@ const InputContainer = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // console.log(messageCtx.messages);
+    const url = `http://127.0.0.1:3000/v1/message/${messageCtx.user}`;
 
     const fetchMessage = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await fetch(
-          // 'https://kathyhere.onrender.com/v1/message/',
-          'http://127.0.0.1:3000/v1/message/kathy',
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              messages: messageCtx.messages,
-              // messages: [{ messageText: message, isUser: true }],
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+            messages: messageCtx.messages,
+            // messages: [{ messageText: message, isUser: true }],
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
         if (!response.ok) {
           throw new Error('Request failed!');
