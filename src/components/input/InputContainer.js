@@ -14,7 +14,7 @@ const InputContainer = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const url = `http://127.0.0.1:3000/v1/message/${messageCtx.user}`;
+    const url = `https://kathyhere.onrender.com/v1/message/${messageCtx.user}`;
 
     const fetchMessage = async () => {
       setIsLoading(true);
