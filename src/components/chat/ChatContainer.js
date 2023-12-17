@@ -3,6 +3,7 @@ import MessageContext from '../utils/message-context';
 import ChatBubble from './ChatBubble';
 import classes from './ChatContainer.module.css';
 import ChatMessages from './ChatMessages';
+import SelectUser from './SelectUser';
 
 const ChatContainer = () => {
   const containerRef = useRef(null);
@@ -12,7 +13,7 @@ const ChatContainer = () => {
 
   const messagesCtx = useContext(MessageContext);
 
-  const messages = messagesCtx.messages.map((message) => (
+  const messages = messagesCtx.messages.map(message => (
     <ChatBubble
       type="text"
       key={message.id}
@@ -31,14 +32,20 @@ const ChatContainer = () => {
     else setIsMessageLoading(true);
   }, [messagesCtx.messages, isMessageLoading]);
 
+  const innerContent = messagesCtx.isUserAvailable ? (
+    <ChatMessages>
+      {messages}
+      {isMessageLoading && (
+        <ChatBubble key={Date.now()} type="loading" isUser={false} />
+      )}
+    </ChatMessages>
+  ) : (
+    <SelectUser />
+  );
+
   return (
     <section ref={containerRef} className={classes.container}>
-      <ChatMessages>
-        {messages}
-        {isMessageLoading && (
-          <ChatBubble key={Date.now()} type="loading" isUser={false} />
-        )}
-      </ChatMessages>
+      {innerContent}
     </section>
   );
 };

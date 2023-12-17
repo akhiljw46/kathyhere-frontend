@@ -82,7 +82,12 @@ const InputContainer = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} className={classes.container}>
+    <form
+      onSubmit={submitHandler}
+      className={`${classes.container} ${
+        messageCtx.isUserAvailable ? '' : classes.hidden
+      }`}
+    >
       <InputText ref={inputRef} />
       <SubmitButton />
     </form>
