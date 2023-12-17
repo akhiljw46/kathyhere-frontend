@@ -19,12 +19,6 @@
   /* background-color: aliceblue; */
 }
 
-@media (width < 450px) {
-  .bubble {
-    font-size: 1.2rem;
-  }
-}
-
 .ai {
   /* float: left; */
   /* text-align: left; */
@@ -62,4 +56,18 @@ p {
 
 .loading {
   width: 2rem;
+}
+
+@media (width < 450px) {
+  .bubble {
+    font-size: 1rem;
+    padding: 2px;
+    margin: 5px;
+  }
+  p {
+    margin: 8px;
+  }
+  .out-para {
+    padding: 0 10px;
+  }
 }

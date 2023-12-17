@@ -14,6 +14,10 @@
   .container {
     width: 99%;
     margin: 0;
-    height: 90vh;
+    height: 81vh;
+  }
+  ul {
+    margin: 0;
+    padding: 5px;
   }
 }

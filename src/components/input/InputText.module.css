@@ -16,3 +16,12 @@
   background-color: #6d6875d3;
   border: 1px rgb(79, 29, 228) 54;
 }
+
+@media (width < 450px) {
+  .input {
+    width: 85%;
+    margin: 5px 8px;
+    font-size: 1rem;
+    height: 30px;
+  }
+}
