@@ -10,14 +10,37 @@
   border-radius: 10px;
 }
 
+.users {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #f18396;
+  font-family: 'The Girl Next Door', cursive, Courier, monospace;
+  font-weight: bold;
+}
+.users img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.users p {
+  margin: 0 10px;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+}
+ul {
+  margin: 0;
+  padding: 5px;
+}
+
 @media (width < 450px) {
   .container {
     width: 99%;
     margin: 0;
     height: 81vh;
-  }
-  ul {
-    margin: 0;
-    padding: 5px;
+    border-radius: 0;
   }
 }
