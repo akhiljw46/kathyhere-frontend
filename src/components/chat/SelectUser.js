@@ -3,6 +3,7 @@ import tom from '../../images/tom-dp.png';
 import kathy from '../../images/Kathy-dp.png';
 import MessageContext from '../utils/message-context';
 import { useContext } from 'react';
+import logo from '../../images/logo-dark.png';
 
 function SelectUser() {
   const messageCtx = useContext(MessageContext);
@@ -12,6 +13,9 @@ function SelectUser() {
 
   return (
     <div className={styles.dialogue}>
+      <div className={styles.logo}>
+        <img src={logo} alt="logo" />
+      </div>
       <p>Whom do you want to talk with?</p>
       <div>
         <button onClick={e => clickHandler('kathy')}>

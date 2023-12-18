@@ -14,3 +14,22 @@
   border: none;
   cursor: pointer;
 }
+
+.logo {
+  display: none;
+}
+
+@media (width < 450px) {
+  .dialogue {
+    position: absolute;
+  }
+  .logo {
+    display: flex;
+
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .logo img {
+    width: 100vw;
+  }
+}
