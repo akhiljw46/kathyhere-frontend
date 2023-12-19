@@ -74,7 +74,7 @@ const MessageProvider = props => {
   }, [error]);
 
   const addMessageHandler = message => {
-    if (!message.messageText) return;
+    if (!message.messageText) message.messageText = '🤔';
     setMessages(prevMessages => [...prevMessages, message]);
   };
 
