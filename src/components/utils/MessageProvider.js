@@ -22,52 +22,56 @@ const MessageProvider = props => {
   const fetchMessage = useCallback(async () => {
     setIsLoading(true);
     setError(null);
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({
-          messages: messages,
-          // messages: [{ messageText: message, isUser: true }],
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        messages,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-      if (!response.ok) {
-        throw new Error('Request failed!');
-      }
-
-      const reqestTimeoutTimer = setTimeout(() => {
-        setIsLoading(false);
-        throw new Error('Request Timeout');
-      }, 1000 * 60 * 2);
-
-      const data = await response.json();
-
-      clearTimeout(reqestTimeoutTimer);
-      addMessageHandler({
-        id: Date.now(),
-        isUser: false,
-        messageText: data.message,
-      });
-    } catch (err) {
-      setError(err.message);
-      console.log('Something went Wrong!', error);
-      addMessageHandler({
-        id: Date.now(),
-        isUser: false,
-        messageText: "Sorry, I'm too busy to talk now 🥵",
-      });
+    if (!response.ok) {
+      throw new Error('Request failed!');
     }
-  }, [error, messages, url]);
+
+    const reqestTimeoutTimer = setTimeout(() => {
+      setIsLoading(false);
+      throw new Error('Request Timeout');
+    }, 1000 * 60 * 2);
+
+    const data = await response.json();
+
+    clearTimeout(reqestTimeoutTimer);
+    addMessageHandler({
+      id: Date.now(),
+      isUser: false,
+      messageText: data.message,
+    });
+  }, [messages, url]);
 
   useEffect(() => {
-    if (messages[messages.length - 1].isUser && !error) {
+    // if (messages[messages.length - 1].isUser && !error) {
+    if (messages[messages.length - 1].isUser) {
       setIsLoading(true);
-      fetchMessage().then(() => setIsLoading(false));
+      fetchMessage()
+        .catch(err => {
+          setError(err.message);
+          addMessageHandler({
+            id: Date.now(),
+            isUser: false,
+            messageText:
+              "Sorry, something came up and I'll be back in seconds 🥵",
+          });
+        })
+        .finally(() => setIsLoading(false));
     }
-  }, [messages, error, fetchMessage]);
+  }, [messages, fetchMessage]);
+
+  useEffect(() => {
+    if (error) console.error('An error occured', error);
+  }, [error]);
 
   const addMessageHandler = message => {
     if (!message.messageText) return;
