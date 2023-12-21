@@ -9,10 +9,20 @@ const DummyMessages = [
   },
 ];
 
+const getLocalStorage = user => {
+  const storedMessages = JSON.parse(localStorage.getItem(`${user}`));
+  if (!storedMessages) return;
+  // Delete last entry if it is by the user to avoid triggering multiple requests
+  if (storedMessages.at(-1).isUser === true) storedMessages.pop();
+  return storedMessages;
+};
+
 const MessageProvider = props => {
   const [user, setUser] = useState('kathy');
   const [isUserAvailable, setIsUserAvailable] = useState(false);
-  const [messages, setMessages] = useState(DummyMessages);
+  const [messages, setMessages] = useState(
+    getLocalStorage(user) ?? DummyMessages
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -51,7 +61,8 @@ const MessageProvider = props => {
   }, [messages, url]);
 
   useEffect(() => {
-    // if (messages[messages.length - 1].isUser && !error) {
+    getLocalStorage(user);
+    localStorage.setItem(`${user}`, JSON.stringify(messages));
     if (messages[messages.length - 1].isUser) {
       setIsLoading(true);
       fetchMessage()
@@ -66,7 +77,7 @@ const MessageProvider = props => {
         })
         .finally(() => setIsLoading(false));
     }
-  }, [messages, fetchMessage]);
+  }, [user, messages, fetchMessage]);
 
   useEffect(() => {
     if (error) console.error('An error occured', error);
@@ -79,15 +90,17 @@ const MessageProvider = props => {
 
   const setUserHandler = user => {
     setUser(user);
-    setMessages([
-      {
-        id: 'm1',
-        isUser: false,
-        messageText: `Heyy, I'm ${
-          user === 'kathy' ? 'Kathy' : 'Tom'
-        }. Wassup dear? 😊 `,
-      },
-    ]);
+    setMessages(
+      getLocalStorage(user) ?? [
+        {
+          id: 'm1',
+          isUser: false,
+          messageText: `Heyy, I'm ${
+            user === 'kathy' ? 'Kathy' : 'Tom'
+          }. Wassup dear? 😊 `,
+        },
+      ]
+    );
     setIsUserAvailable(true);
   };
   const setIsUserAvailableHandler = isAvailable =>
