@@ -16,8 +16,7 @@ const MessageProvider = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const url = `https://kathyhere.onrender.com/v1/message/${user}`;
-  const url = `http://localhost:1234/v1/message/${user}`;
+  const url = `${process.env.REACT_APP_BACKEND_URL}${user}`;
 
   const fetchMessage = useCallback(async () => {
     setIsLoading(true);
