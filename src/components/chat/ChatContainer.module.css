@@ -1,5 +1,6 @@
 .container {
-  display: block;
+  display: flex;
+  flex-direction: column;
   float: left;
   width: 80%;
   margin: 10px 10%;
@@ -12,6 +13,7 @@
 
 .users {
   display: flex;
+  position: sticky;
   justify-content: space-between;
   width: 100%;
   background-color: #f18396;
