@@ -11,3 +11,7 @@ p {
   font-family: 'The Girl Next Door', cursive, Menlo, Monaco, Consolas,
     'Courier New', monospace;
 }
+
+img {
+  pointer-events: none;
+}
