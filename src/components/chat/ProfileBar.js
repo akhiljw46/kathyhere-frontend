@@ -5,6 +5,8 @@ import kathy from '../../images/Kathy-dp.png';
 import tom from '../../images/tom-dp.png';
 import unknown from '../../images/unknown-dp.jpg';
 import ProfileButton from './ProfileButton';
+import switchIcon from '../../images/user-switch.svg';
+import clearIcon from '../../images/clear-all.svg';
 
 function ProfileBar() {
   const messagesCtx = useContext(MessageContext);
@@ -36,8 +38,18 @@ function ProfileBar() {
           </>
         )}
       </span>
-      <ProfileButton text="Switch user" clickHandler={switchUserHandler} />
-      <ProfileButton text="Clear Chat" clickHandler={clearChatHandler} />
+      <span className={classes['button-bar']}>
+        <ProfileButton
+          text="Switch buddy"
+          icon={switchIcon}
+          clickHandler={switchUserHandler}
+        />
+        <ProfileButton
+          text="Clear chat"
+          icon={clearIcon}
+          clickHandler={clearChatHandler}
+        />
+      </span>
       <span className={classes.profile}>
         <img src={unknown} alt="you" />
 
