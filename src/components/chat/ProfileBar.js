@@ -12,10 +12,12 @@ function ProfileBar() {
   const messagesCtx = useContext(MessageContext);
 
   const clearChatHandler = () => {
+    if (messagesCtx.isLoading) return;
     messagesCtx.clearMessages();
   };
 
   const switchUserHandler = () => {
+    if (messagesCtx.isLoading) return;
     messagesCtx.setIsUserAvailable(false);
   };
 
