@@ -2,7 +2,7 @@
   display: flex;
   border: none;
   background-color: #eecece;
-  border-radius: 10%;
+  border-radius: 10px;
   margin: 5px 10px;
   cursor: pointer;
 }
