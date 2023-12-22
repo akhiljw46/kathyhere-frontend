@@ -1,11 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import MessageContext from './message-context';
 
-const DummyMessages = [
+const buildDefaultMessage = user => [
   {
     id: 'm1',
     isUser: false,
-    messageText: "Heyy, I'm Kathy. Wassup dear? 😊 ",
+    messageText: `Heyy, I'm ${
+      user === 'kathy' ? 'Kathy' : 'Tom'
+    }. Wassup dear? 😊 `,
   },
 ];
 
@@ -13,7 +15,7 @@ const getLocalStorage = user => {
   const storedMessages = JSON.parse(localStorage.getItem(`${user}`));
   if (!storedMessages) return;
   // Delete last entry if it is by the user to avoid triggering multiple requests
-  if (storedMessages.at(-1).isUser === true) storedMessages.pop();
+  if (storedMessages.at(-1).isUser) storedMessages.pop();
   return storedMessages;
 };
 
@@ -21,7 +23,7 @@ const MessageProvider = props => {
   const [user, setUser] = useState('kathy');
   const [isUserAvailable, setIsUserAvailable] = useState(false);
   const [messages, setMessages] = useState(
-    getLocalStorage(user) ?? DummyMessages
+    getLocalStorage(user) ?? buildDefaultMessage(user)
   );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -90,17 +92,7 @@ const MessageProvider = props => {
 
   const setUserHandler = user => {
     setUser(user);
-    setMessages(
-      getLocalStorage(user) ?? [
-        {
-          id: 'm1',
-          isUser: false,
-          messageText: `Heyy, I'm ${
-            user === 'kathy' ? 'Kathy' : 'Tom'
-          }. Wassup dear? 😊 `,
-        },
-      ]
-    );
+    setMessages(getLocalStorage(user) ?? buildDefaultMessage(user));
     setIsUserAvailable(true);
   };
   const setIsUserAvailableHandler = isAvailable =>
@@ -108,13 +100,15 @@ const MessageProvider = props => {
 
   const setIsLoadingHandler = isLoading => setIsLoading(isLoading);
 
+  const clearMessages = () => setMessages(buildDefaultMessage(user));
+
   const messageContext = {
     user,
     isUserAvailable,
     messages,
     isLoading,
     error,
-    fetchMessage,
+    clearMessages,
     addMessage: addMessageHandler,
     setUser: setUserHandler,
     setIsUserAvailable: setIsUserAvailableHandler,
