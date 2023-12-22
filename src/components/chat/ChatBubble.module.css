@@ -1,29 +1,20 @@
 .bubble {
   list-style-type: none;
   font-family: 'The Girl Next Door', cursive, Courier, monospace;
-  /* font-family: 'Lato', sans-serif; */
-  /* font-size: 20px; */
+
   font-size: 1.4rem;
   font-weight: bold;
 
   position: relative;
-  /* display: block; */
-  /* max-width: 30rem; */
-  /* max-height: 350px; */
-  /* border: 10px; */
+
   padding: 5px;
   margin: 10px;
   display: flex;
   text-align: left;
-  /* margin: 5px; */
-  /* background-color: aliceblue; */
 }
 
 .ai {
-  /* float: left; */
-  /* text-align: left; */
   justify-content: flex-start;
-  /* background-color: rgb(179, 189, 189); */
 }
 
 .out-para {
@@ -33,21 +24,15 @@
 }
 
 .ai .out-para {
-  /* background-color: #e5989b; */
   background-color: #b5838d;
 }
 
 .user {
-  /* float: right; */
-  /* text-align: right; */
   justify-content: flex-end;
-  /* background-color: rgb(191, 143, 143); */
 }
 
 .user .out-para {
   background-color: #e5989b;
-
-  /* background-color: #b5838d; */
 }
 
 p {

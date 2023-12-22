@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  border: none;
+  background-color: #eecece;
+  border-radius: 10px;
+  margin: 5px 10px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #bf8f8f;
+}
+
+.button p {
+  margin: 0 3px;
+  padding: 0;
+  font-weight: bold;
+}
+
+@media (width < 650px) {
+  .button {
+    padding: 5px 15px;
+  }
+  .button p {
+    display: none;
+  }
+}

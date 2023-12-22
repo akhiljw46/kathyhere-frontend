@@ -6,6 +6,7 @@ const MessageContext = createContext({
   isLoading: false,
   error: null,
   messages: [],
+  clearMessages: () => {},
   addMessage: message => {},
   setUser: user => {},
   setIsUserAvailable: isAvailable => {},
