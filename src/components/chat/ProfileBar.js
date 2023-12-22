@@ -9,8 +9,12 @@ import ProfileButton from './ProfileButton';
 function ProfileBar() {
   const messagesCtx = useContext(MessageContext);
 
-  const clickHandler = () => {
+  const clearChatHandler = () => {
     messagesCtx.clearMessages();
+  };
+
+  const switchUserHandler = () => {
+    messagesCtx.setIsUserAvailable(false);
   };
 
   return (
@@ -32,7 +36,8 @@ function ProfileBar() {
           </>
         )}
       </span>
-      <ProfileButton text="Clear Chat" clickHandler={clickHandler} />
+      <ProfileButton text="Switch user" clickHandler={switchUserHandler} />
+      <ProfileButton text="Clear Chat" clickHandler={clearChatHandler} />
       <span className={classes.profile}>
         <img src={unknown} alt="you" />
 
