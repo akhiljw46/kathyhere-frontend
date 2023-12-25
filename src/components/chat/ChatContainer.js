@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MessageContext from '../utils/message-context';
 import ChatBubble from './ChatBubble';
 import classes from './ChatContainer.module.css';
@@ -8,7 +8,6 @@ import SelectUser from './SelectUser';
 import ProfileBar from './ProfileBar';
 
 const ChatContainer = () => {
-  const containerRef = useRef(null);
   const [isMessageLoading, setIsMessageLoading] = useState(false);
 
   // containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -25,17 +24,13 @@ const ChatContainer = () => {
   ));
 
   useEffect(() => {
-    containerRef.current.scroll({
-      top: containerRef.current.scrollHeight,
-      behavior: 'smooth',
-    });
     if (!messagesCtx.messages[messagesCtx.messages.length - 1].isUser)
       setIsMessageLoading(false);
     else setIsMessageLoading(true);
   }, [messagesCtx.messages, isMessageLoading]);
 
   const innerContent = messagesCtx.isUserAvailable ? (
-    <ChatMessages>
+    <ChatMessages isLoading={isMessageLoading}>
       {messages}
       {isMessageLoading && (
         <ChatBubble key={Date.now()} type="loading" isUser={false} />
@@ -46,7 +41,7 @@ const ChatContainer = () => {
   );
 
   return (
-    <section ref={containerRef} className={classes.container}>
+    <section className={classes.container}>
       <ProfileBar />
       {innerContent}
     </section>
